@@ -30,7 +30,7 @@ Angles run from 0° to 180° from the horizontal, and direction doesn't matter: 
 What moves:
 
 - **Handles** rotate around their on-curve node.
-- **Line segments and point pairs**: the second point (in path order) rotates around the first. If that point is an on-curve node, its handles move with it.
+- **Line segments and point pairs**: the second point (in path order) slides sideways — only its x changes, its height stays put. Its handles move with it. (If the line is flat, or you type 0°, sliding sideways can't get there, so the point rotates around the first instead.)
 - The distance between the two points stays the same.
 - The new position is snapped to the font's grid, so the final angle can be a hair off what you typed.
 - **Smooth nodes** stay smooth: the handle on the other side rotates to stay in line. One exception: if the other side is a straight line, the line isn't moved, so that node stops being truly smooth.

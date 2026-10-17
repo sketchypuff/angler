@@ -536,8 +536,15 @@ class Angler(ReporterPlugin):
 			key=lambda c: abs((c - current + 180.0) % 360.0 - 180.0),
 		)
 		snap = self.snapper(layer)
-		new_x = snap(anchor.x + length * cos(radians(direction)))
-		new_y = snap(anchor.y + length * sin(radians(direction)))
+		sin_d = sin(radians(direction))
+		if mover.type != OFFCURVE and abs(dy) > 1e-6 and abs(sin_d) > 1e-6:
+			# On-curve nodes slide horizontally only, keeping their height.
+			new_x = snap(anchor.x + dy * cos(radians(direction)) / sin_d)
+			new_y = mover.y
+		else:
+			# Handles (and lines that can't reach the angle horizontally) rotate.
+			new_x = snap(anchor.x + length * cos(radians(direction)))
+			new_y = snap(anchor.y + length * sin_d)
 
 		path_index, mover_index = mover_ref
 		path = layer.paths[path_index]

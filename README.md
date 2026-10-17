@@ -14,6 +14,16 @@ Angles run from 0° to 180° measured from horizontal, and direction doesn't mat
 - **Orange**: within 0.5° of horizontal or vertical but not exactly on it. These are almost-straight lines you probably want to fix.
 - **Green**: exactly horizontal or vertical.
 
+## Editing an angle
+
+Click a badge, or right-click and choose **Set Angle (…)…**, to type a new angle. Press **Enter** to apply, or **Esc** (or click away) to cancel. Clicking a badge with Shift, Cmd, Option, or Control held passes the click through to Glyphs.
+
+- **Handles** rotate around their on-curve node.
+- **Segments and two-point pairs**: the second point (in path order) rotates around the first. If that point is on-curve, its handles move with it.
+- The length is kept and the result is snapped to the font grid, so the final angle may be a hair off what you typed.
+- **Smooth nodes** keep their opposite handle in line. If the other side of a smooth node is a straight line, the line stays put, so the node stops being truly smooth.
+- One **Cmd+Z** undoes the whole edit.
+
 ## Development install
 
 ```bash
